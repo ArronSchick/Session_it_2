@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_234204) do
+ActiveRecord::Schema.define(version: 2020_11_15_000301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2020_11_14_234204) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "profile_id", null: false
+    t.index ["profile_id"], name: "index_classrooms_on_profile_id"
   end
 
   create_table "homes", force: :cascade do |t|
@@ -33,6 +35,10 @@ ActiveRecord::Schema.define(version: 2020_11_14_234204) do
     t.integer "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "profile_id", null: false
+    t.bigint "classroom_id", null: false
+    t.index ["classroom_id"], name: "index_lessons_on_classroom_id"
+    t.index ["profile_id"], name: "index_lessons_on_profile_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -40,6 +46,8 @@ ActiveRecord::Schema.define(version: 2020_11_14_234204) do
     t.string "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -47,6 +55,10 @@ ActiveRecord::Schema.define(version: 2020_11_14_234204) do
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "profile_id", null: false
+    t.bigint "classroom_id", null: false
+    t.index ["classroom_id"], name: "index_reviews_on_classroom_id"
+    t.index ["profile_id"], name: "index_reviews_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,4 +73,10 @@ ActiveRecord::Schema.define(version: 2020_11_14_234204) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "classrooms", "profiles"
+  add_foreign_key "lessons", "classrooms"
+  add_foreign_key "lessons", "profiles"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "reviews", "classrooms"
+  add_foreign_key "reviews", "profiles"
 end
