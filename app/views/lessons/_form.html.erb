@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= form.label :picture %>
+    <%= form.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %>
+  </div>
   <div class="field">
     <%= form.label :description %>
     <%= form.text_field :description %>
@@ -28,10 +31,10 @@
 
   <div class="field">
     <%= form.label :end_time %>
-    <%= form.number_field :end_time %>
+    <%= form.select_time :end_time %>
   </div>
 
-  <div class="actions">
+  <div class="actions btn btn-primary">
     <%= form.submit %>
   </div>
 <% end %>
