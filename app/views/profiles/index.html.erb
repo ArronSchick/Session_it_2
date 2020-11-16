@@ -18,12 +18,12 @@
   <tbody class="card m-b4">
     <% @profiles.each do |profile| %>
       <tr>
-        <td><%= image_tag profile.picture, :class => "profile_image"%></td>
+        <td><%= image_tag profile.picture, :class => "profile_image" if profile.picture.attached? %></td>
         <td><%= profile.name %></td>
         <td><%= profile.bio %></td>
         
         <td><%= link_to 'Edit', edit_profile_path(profile), :class => "btn btn-primary" %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+        <td><%= link_to 'Delete', profile, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
       </tr>
     <% end %>
     
@@ -38,7 +38,7 @@
 <% end %>
 
 <% if @user.profile.classroom %>
-  
+  <%= link_to 'Go to Classroom', classrooms_path, :class => "btn btn-primary" %>
 <% else %>
   <%= link_to 'Create a classroom', new_classroom_path, :class => "btn btn-primary btn-lg"%>
 <% end %>

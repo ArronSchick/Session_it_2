@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Classrooms</h1>
+<h1>Classroom</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Description</th>
+      <th></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,10 +13,10 @@
   <tbody>
     <% @classrooms.each do |classroom| %>
       <tr>
+        <td><%= image_tag classroom.picture, :class => "classroom_image" if classroom.picture.attached? %></td>
         <td><%= classroom.description %></td>
-        <td><%= link_to 'Show', classroom %></td>
-        <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
-        <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_classroom_path(classroom), :class => "btn btn-primary" %></td>
+        <td><%= link_to 'Delete', classroom, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,8 @@
 
 <br>
 
-<%= link_to 'New Classroom', new_classroom_path %>
+<% if @user.profile.classroom %>
+  <%= link_to 'Go to Profile', profiles_path, :class => "btn btn-primary" %>
+<% else %>
+  <%= link_to 'New Classroom', new_classroom_path, :class => "btn btn-primary" %>
+<% end %>
