@@ -11,6 +11,8 @@
   </thead>
 
   <tbody>
+    <%# <%= image_tag @classrooms.banner_image, :class => "classroom_banner_image" if @classrooms.banner_image.attached?%>
+
     <% @classrooms.each do |classroom| %>
       <tr>
         <td><%= image_tag classroom.picture, :class => "classroom_image" if classroom.picture.attached? %></td>
@@ -26,6 +28,7 @@
 
 <% if @user.profile.classroom %>
   <%= link_to 'Go to Profile', profiles_path, :class => "btn btn-primary" %>
+  <%= link_to 'Create a Lesson', new_lesson_path, :class => "btn btn-secondary" %>
 <% else %>
   <%= link_to 'New Classroom', new_classroom_path, :class => "btn btn-primary" %>
 <% end %>
