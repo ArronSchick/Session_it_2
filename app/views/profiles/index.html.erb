@@ -31,13 +31,13 @@
 </table>
 
 <br>
-<% if @user.profile %>
+<% if current_user.profile %>
  
 <% else %>
   <%= link_to 'New Profile', new_profile_path, :class => "btn btn-primary btn-lg" %>
 <% end %>
 
-<% if @user.profile.classroom %>
+<% if @classroom_exists %>
   <%= link_to 'Go to Classroom', classrooms_path, :class => "btn btn-primary" %>
 <% else %>
   <%= link_to 'Create a classroom', new_classroom_path, :class => "btn btn-primary btn-lg"%>

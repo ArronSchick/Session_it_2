@@ -26,7 +26,6 @@ class LessonsController < ApplicationController
   # POST /lessons.json
   def create
     @lesson = Lesson.new(lesson_params)
-    @lesson.profile_id = current_user.profile.id
     @lesson.classroom_id = current_user.profile.classroom.id
 
     respond_to do |format|

@@ -7,6 +7,9 @@ class ClassroomsController < ApplicationController
   def index
     @classrooms = Classroom.all
     @user = current_user
+    @profile_exists = current_user.profile
+    @lessons = Lesson.all
+    
   end
 
   # GET /classrooms/1
@@ -28,6 +31,7 @@ class ClassroomsController < ApplicationController
   def create
     @classroom = Classroom.new(classroom_params)
     @classroom.profile_id = current_user.profile.id
+    
 
     respond_to do |format|
       if @classroom.save

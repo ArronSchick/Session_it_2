@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
   def index
     @profiles = Profile.all
     @user = current_user
+    @classroom_exists = current_user.profile.classroom
   end
 
   # GET /profiles/1
@@ -28,7 +29,6 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
-    @user_id = @profile.user_id
 
     respond_to do |format|
       if @profile.save
