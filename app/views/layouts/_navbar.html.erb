@@ -12,12 +12,15 @@
       <li class="nav-item">
         <%= link_to "Profile", profiles_path, method: :get, :class => "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Log in", new_user_session_path, method: :get, :class => "btn btn-outline-light my-2 my-sm-0 ml-5 px-3 testing" %>
-      </li>
-      <li class="nav-item">
-      <%= link_to "Log out", destroy_user_session_path, method: :delete, :class => "btn btn-outline-light my-2 my-sm-0 ml-3" %>
-      </li>
+      <% if user_signed_in? == false %>
+        <li class="nav-item">
+          <%= link_to "Log in", new_user_session_path, method: :get, :class => "btn btn-outline-light my-2 my-sm-0 ml-5 px-3 testing" %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, :class => "btn btn-outline-light my-2 my-sm-0 ml-3" %>
+        </li>
+        <% end %>
     </ul>
   </div>
 </nav>

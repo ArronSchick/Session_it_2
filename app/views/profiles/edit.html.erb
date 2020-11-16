@@ -1,6 +1,21 @@
 <h1>Editing Profile</h1>
 
+<table>
+  <thead>
+    <tr>
+      <th>Edit profile</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= image_tag @profile.picture if @profile.picture.attached?%></td>
+        <td><%= @profile.name %></td>
+        <td><%= @profile.bio %></td>
+      </tr>
+  </tbody>
+</table>
 <%= render 'form', profile: @profile %>
 
-<%= link_to 'Show', @profile %> |
 <%= link_to 'Back', profiles_path %>
