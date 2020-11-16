@@ -1,3 +1,7 @@
+* {
+    border: red 2px solid;
+}
+
 .btn:visited {
     color: #dedede;
 }
@@ -10,6 +14,18 @@
 
 .classroom_image {
     border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}
+
+.lesson_image {
+    border-radius: 10px;
+    height: 200px;
+    width: 200px;
+}
+
+.banner_image {
+    border-radius: 10px;
     height: 200px;
     width: 200px;
 }

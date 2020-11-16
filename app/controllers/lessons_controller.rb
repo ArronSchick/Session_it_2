@@ -26,10 +26,12 @@ class LessonsController < ApplicationController
   # POST /lessons.json
   def create
     @lesson = Lesson.new(lesson_params)
+    @lesson.profile_id = current_user.profile.id
+    @lesson.classroom_id = current_user.profile.classroom.id
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
+        format.html { redirect_to lessons_path, notice: 'Lesson was successfully created.' }
         format.json { render :show, status: :created, location: @lesson }
       else
         format.html { render :new }
@@ -43,7 +45,7 @@ class LessonsController < ApplicationController
   def update
     respond_to do |format|
       if @lesson.update(lesson_params)
-        format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
+        format.html { redirect_to lessons_path, notice: 'Lesson was successfully updated.' }
         format.json { render :show, status: :ok, location: @lesson }
       else
         format.html { render :edit }
@@ -57,7 +59,7 @@ class LessonsController < ApplicationController
   def destroy
     @lesson.destroy
     respond_to do |format|
-      format.html { redirect_to lessons_url, notice: 'Lesson was successfully destroyed.' }
+      format.html { redirect_to lessons_url, notice: 'Lesson was successfully Deleted.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +72,6 @@ class LessonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lesson_params
-      params.require(:lesson).permit(:description, :date, :start_time, :end_time, :picture)
+      params.require(:lesson).permit(:description, :date, :start_time, :end_time, :picture, :price )
     end
 end

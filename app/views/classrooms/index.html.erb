@@ -12,9 +12,9 @@
 
   <tbody>
     <%# <%= image_tag @classrooms.banner_image, :class => "classroom_banner_image" if @classrooms.banner_image.attached?%>
-
     <% @classrooms.each do |classroom| %>
       <tr>
+        <td><%= image_tag classroom.banner_image, :class => "banner_image" if classroom.banner_image.attached? %></td>
         <td><%= image_tag classroom.picture, :class => "classroom_image" if classroom.picture.attached? %></td>
         <td><%= classroom.description %></td>
         <td><%= link_to 'Edit', edit_classroom_path(classroom), :class => "btn btn-primary" %></td>
@@ -23,6 +23,9 @@
     <% end %>
   </tbody>
 </table>
+<div>
+  
+</div>
 
 <br>
 

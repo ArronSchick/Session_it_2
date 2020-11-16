@@ -9,6 +9,7 @@
       <th>Date</th>
       <th>Start time</th>
       <th>End time</th>
+      <th>Price</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,13 +17,14 @@
   <tbody>
     <% @lessons.each do |lesson| %>
       <tr>
+        <td><%= image_tag lesson.picture, :class => "lesson_image" if lesson.picture.attached? %></td>
         <td><%= lesson.description %></td>
         <td><%= lesson.date %></td>
         <td><%= lesson.start_time %></td>
         <td><%= lesson.end_time %></td>
-        <td><%= link_to 'Show', lesson %></td>
-        <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
-        <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>$<%= lesson.price %></td>
+        <td><%= link_to 'Edit', edit_lesson_path(lesson), :class => "actions btn btn-primary" %></td>
+        <td><%= link_to 'Delete', lesson, method: :delete, data: { confirm: 'Are you sure?' }, :class => "actions btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Lesson', new_lesson_path %>
+<%= link_to 'Create another Lesson', new_lesson_path, :class => "actions btn btn-primary"  %>
