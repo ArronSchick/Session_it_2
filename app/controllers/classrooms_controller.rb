@@ -6,6 +6,7 @@ class ClassroomsController < ApplicationController
   # GET /classrooms.json
   def index
     @classrooms = Classroom.all
+    @user = current_user
   end
 
   # GET /classrooms/1
@@ -26,10 +27,11 @@ class ClassroomsController < ApplicationController
   # POST /classrooms.json
   def create
     @classroom = Classroom.new(classroom_params)
+    @classroom.profile_id = current_user.profile.id
 
     respond_to do |format|
       if @classroom.save
-        format.html { redirect_to @classroom, notice: 'Classroom was successfully created.' }
+        format.html { redirect_to classrooms_path, notice: 'Classroom was successfully created.' }
         format.json { render :show, status: :created, location: @classroom }
       else
         format.html { render :new }
@@ -43,7 +45,7 @@ class ClassroomsController < ApplicationController
   def update
     respond_to do |format|
       if @classroom.update(classroom_params)
-        format.html { redirect_to @classroom, notice: 'Classroom was successfully updated.' }
+        format.html { redirect_to classrooms_path, notice: 'Classroom was successfully updated.' }
         format.json { render :show, status: :ok, location: @classroom }
       else
         format.html { render :edit }
@@ -57,7 +59,7 @@ class ClassroomsController < ApplicationController
   def destroy
     @classroom.destroy
     respond_to do |format|
-      format.html { redirect_to classrooms_url, notice: 'Classroom was successfully destroyed.' }
+      format.html { redirect_to classrooms_path, notice: 'Classroom was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +72,6 @@ class ClassroomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def classroom_params
-      params.require(:classroom).permit(:description)
+      params.require(:classroom).permit(:description, :picture)
     end
 end
