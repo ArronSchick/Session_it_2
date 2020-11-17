@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.all
     @user = current_user
     @profile_view = current_user.profile
+    @classroom_exists = current_user.profile.classroom.id
   end
 
   # GET /profiles/1

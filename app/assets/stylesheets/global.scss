@@ -1,5 +1,5 @@
 // * {
-//     border: red 2px solid;
+//     border: red 0.5px solid;
 // }
 
 .btn:visited {
@@ -28,4 +28,15 @@
     border-radius: 10px;
     height: 200px;
     width: 200px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width: 250px;
 }
