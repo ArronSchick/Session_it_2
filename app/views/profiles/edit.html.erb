@@ -1,9 +1,9 @@
+<div class="container">
 <h1>Editing Profile</h1>
 <% @profile_view = current_user.profile %>
 <table>
   <thead>
     <tr>
-      <th>Edit profile</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,3 +22,4 @@
 <%= render 'form', profile: @profile_view %>
 
 <%= link_to 'Back', profiles_path, :class => "btn btn-secondary" %>
+</div>

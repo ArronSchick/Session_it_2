@@ -2,6 +2,11 @@
 
 <p>
   <strong>Description:</strong>
+  <td><%= image_tag @lesson.picture, :class => "lesson_image" if @lesson.picture.attached? %></td>
+</p>
+
+<p>
+  <strong>Description:</strong>
   <%= @lesson.description %>
 </p>
 
@@ -20,5 +25,5 @@
   <%= @lesson.end_time %>
 </p>
 
-<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
-<%= link_to 'Back', lessons_path %>
+<%= link_to 'Book it', new_booked_path, method: :get, :class => "btn btn-secondary"%>
+<%= link_to 'Back', lessons_path, method: :get, :class => "btn btn-secondary"%>
