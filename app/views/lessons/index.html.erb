@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>All Lessons</h1>
@@ -18,8 +19,6 @@
         <td><%= lesson.start_time %></td>
         <td><%= lesson.end_time %></td>
         <td>$<%= lesson.price %></td>
-        <td><%= link_to 'Edit', edit_lesson_path(lesson), :class => "actions btn btn-primary" %></td>
-        <td><%= link_to 'Delete', lesson, method: :delete, data: { confirm: 'Are you sure?' }, :class => "actions btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,3 +27,4 @@
 <br>
 
 <%= link_to 'Back', root_path, :class => "actions btn btn-primary"  %>
+</div>
