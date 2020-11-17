@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+
 <h1>Classroom</h1>
 
 <table>
@@ -11,15 +12,13 @@
   </thead>
 
   <tbody>
-    <% @classrooms.each do |classroom| %>
       <tr>
-        <td><%= image_tag classroom.banner_image, :class => "banner_image" if classroom.banner_image.attached? %></td>
-        <td><%= image_tag classroom.picture, :class => "classroom_image" if classroom.picture.attached? %></td>
-        <td><%= classroom.description %></td>
-        <td><%= link_to 'Edit', edit_classroom_path(classroom), :class => "btn btn-primary" %></td>
-        <td><%= link_to 'Delete', classroom, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+        <td><%= image_tag @classroom_view.banner_image, :class => "banner_image" if @classroom_view.banner_image.attached? %></td>
+        <td><%= image_tag @classroom_view.picture, :class => "classroom_image" if @classroom_view.picture.attached? %></td>
+        <td><%= @classroom_view.description %></td>
+        <td><%= link_to 'Edit', edit_classroom_path(@classroom_view), :class => "btn btn-primary" %></td>
+        <td><%= link_to 'Delete', @classroom_view, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
       </tr>
-    <% end %>
   </tbody>
 </table>
 <div>
@@ -31,6 +30,7 @@
 <% if @profile_exists %>
   <%= link_to 'Go to Profile', profiles_path, :class => "btn btn-primary" %>
   <%= link_to 'Create a Lesson', new_lesson_path, :class => "btn btn-secondary" %>
+  <%= link_to 'View Lessons', lessons_path, :class => "btn btn-primary" %>
 <% else %>
   <%= link_to 'New Classroom', new_classroom_path, :class => "btn btn-primary" %>
 <% end %>

@@ -1,5 +1,5 @@
 <h1>Editing Profile</h1>
-
+<% @profile_view = current_user.profile %>
 <table>
   <thead>
     <tr>
@@ -10,15 +10,15 @@
 
   <tbody>
       <tr>
-        <td><%= image_tag @profile.picture if @profile.picture.attached?%></td>
-        <td><%= @profile.name %></td>
-        <td><%= @profile.bio %></td>
+        <td><%= image_tag @profile_view.picture, :class => "profile_image" if @profile_view.picture.attached? %></td>
+        <td><%= @profile_view.name %></td>
+        <td><%= @profile_view.bio %></td>
       </tr>
   </tbody>
 </table>
 
 <br>
 
-<%= render 'form', profile: @profile %>
+<%= render 'form', profile: @profile_view %>
 
 <%= link_to 'Back', profiles_path, :class => "btn btn-secondary" %>

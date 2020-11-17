@@ -8,8 +8,7 @@ class ClassroomsController < ApplicationController
     @classrooms = Classroom.all
     @user = current_user
     @profile_exists = current_user.profile
-    @lessons = Lesson.all
-    
+    @classroom_view = current_user.profile.classroom
   end
 
   # GET /classrooms/1
@@ -24,6 +23,7 @@ class ClassroomsController < ApplicationController
 
   # GET /classrooms/1/edit
   def edit
+    @classroom_view = current_user.profile.classroom
   end
 
   # POST /classrooms
@@ -61,10 +61,14 @@ class ClassroomsController < ApplicationController
   # DELETE /classrooms/1
   # DELETE /classrooms/1.json
   def destroy
-    @classroom.destroy
-    respond_to do |format|
-      format.html { redirect_to classrooms_path, notice: 'Classroom was successfully Deleted.' }
-      format.json { head :no_content }
+    if current_user.profile.classroom.id == current_user.profile.classroom.lesson.classroom_id
+      redirect_to classrooms_path, notice: 'Cannot delete Classroom with existing lessons'
+      else
+      @classroom.destroy
+      respond_to do |format|
+        format.html { redirect_to classrooms_path, notice: 'Classroom was successfully Deleted.' }
+        format.json { head :no_content }
+      end
     end
   end
 

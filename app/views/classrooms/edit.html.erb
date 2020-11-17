@@ -1,4 +1,6 @@
 <h1>Editing Classroom</h1>
+
+
 <table>
   <thead>
     <tr>
@@ -9,14 +11,14 @@
 
   <tbody>
       <tr>
-        <td><%= image_tag @classroom.picture, :class => "classroom_image" if @classroom.picture.attached? %></td>
-        <td><%= @classroom.description %></td>
+        <td><%= image_tag @classroom_view.picture, :class => "classroom_image" if @classroom_view.picture.attached? %></td>
+        <td><%= @classroom_view.description %></td>
       </tr>
   </tbody>
 </table>
 
 <br>
 
-<%= render 'form', classroom: @classroom %>
+<%= render 'form', classroom: @classroom_view %>
 
 <%= link_to 'Back', classrooms_path, :class => "btn btn-secondary" %>

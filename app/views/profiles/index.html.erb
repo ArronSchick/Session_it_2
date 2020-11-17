@@ -15,23 +15,20 @@
     </tr>
   </thead>
 
-  <tbody class="card m-b4">
-    <% @profiles.each do |profile| %>
-      <tr>
-        <td><%= image_tag profile.picture, :class => "profile_image" if profile.picture.attached? %></td>
-        <td><%= profile.name %></td>
-        <td><%= profile.bio %></td>
-        
-        <td><%= link_to 'Edit', edit_profile_path(profile), :class => "btn btn-primary" %></td>
-        <td><%= link_to 'Delete', profile, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
-      </tr>
-    <% end %>
-    
-  </tbody>
-</table>
+    <tbody class="card m-b4">
+        <tr>
+          <td><%= image_tag @profile_view.picture, :class => "profile_image" if @profile_view.picture.attached? %></td>
+          <td><%= @profile_view.name %></td>
+          <td><%= @profile_view.bio %></td>
+          <td><%= link_to 'Edit', edit_profile_path(@profile_view), :class => "btn btn-primary" %></td>
+        </tr>
+      
+    </tbody>
+  </table>
 
-<br>
-<% if current_user.profile %>
+  <br>
+
+<% if @profile_view %>
  
 <% else %>
   <%= link_to 'New Profile', new_profile_path, :class => "btn btn-primary btn-lg" %>

@@ -13,16 +13,9 @@
       <li class="nav-item">
         <%= link_to "Profile", profiles_path, method: :get, :class => "nav-link" %>
       </li>
-      <% if Profile.where.not(id:nil) && Classroom.where.not(id:nil) %>
         <li class="nav-item">
           <%= link_to "Classroom", classrooms_path, method: :get, :class => "nav-link" %>
         </li>
-        
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Classroom", new_classroom_path, method: :get, :class => "nav-link" %>
-        </li>
-      <% end %>
       
       <% if user_signed_in? == false %>
         <li class="nav-item">
