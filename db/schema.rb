@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_212146) do
+ActiveRecord::Schema.define(version: 2020_11_16_223808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_11_16_212146) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "profile_id", null: false
+    t.bigint "lesson_id", null: false
+    t.index ["lesson_id"], name: "index_bookeds_on_lesson_id"
     t.index ["profile_id"], name: "index_bookeds_on_profile_id"
   end
 
@@ -65,8 +67,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_212146) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "classroom_id", null: false
-    t.bigint "booked_id", null: false
-    t.index ["booked_id"], name: "index_lessons_on_booked_id"
+    t.float "price"
     t.index ["classroom_id"], name: "index_lessons_on_classroom_id"
   end
 
@@ -103,9 +104,9 @@ ActiveRecord::Schema.define(version: 2020_11_16_212146) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookeds", "lessons"
   add_foreign_key "bookeds", "profiles"
   add_foreign_key "classrooms", "profiles"
-  add_foreign_key "lessons", "bookeds"
   add_foreign_key "lessons", "classrooms"
   add_foreign_key "profiles", "users"
   add_foreign_key "reviews", "classrooms"

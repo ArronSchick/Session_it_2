@@ -5,8 +5,10 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
+    # @profiles = Profile.all
+    @profile = Profile.all
     @user = current_user
+    @profile_view = current_user.profile
   end
 
   # GET /profiles/1
@@ -28,7 +30,6 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
-    @user_id = @profile.user_id
 
     respond_to do |format|
       if @profile.save
@@ -57,13 +58,7 @@ class ProfilesController < ApplicationController
 
   # DELETE /profiles/1
   # DELETE /profiles/1.json
-  def destroy
-    @profile.destroy
-    respond_to do |format|
-      format.html { redirect_to profiles_path, notice: 'Profile was successfully Deleted.' }
-      format.json { head :no_content }
-    end
-  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

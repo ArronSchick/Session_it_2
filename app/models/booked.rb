@@ -1,4 +1,4 @@
 class Booked < ApplicationRecord
-    has_many :lessons
     belongs_to :profile
+    belongs_to :lesson
 end
