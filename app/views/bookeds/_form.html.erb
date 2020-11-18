@@ -1,4 +1,5 @@
-<%= form_with(model: booked, local: true) do |form| %>
+
+<%= form_with(model: booked, url: booked_lesson_path(@lesson), local: true) do |form| %>
   <% if booked.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(booked.errors.count, "error") %> prohibited this booked from being saved:</h2>
@@ -10,8 +11,7 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="actions">
+  <div class="actions btn btn-primary">
     <%= form.submit %>
   </div>
 <% end %>
