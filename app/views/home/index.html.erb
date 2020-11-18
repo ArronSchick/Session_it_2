@@ -2,25 +2,23 @@
 
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
-    <div class="container cont-1">
+    <div class="menu-col">
       <h1 class="display-3">Session it</h1>
-      <p>Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons Lessons </p>
+      <p class="desc"> A place where you can find or offer quick lessons for a variety of hobbies. Devlelop your skills or try something new. Join up today </p>
       <p><%= link_to "Sign up", new_user_registration_path, method: :get, :class => "btn btn-primary btn-lg" %></p>
     </div>
   </div>
 
-  <div class="container cont-1">
+  <div class="">
     <!-- Example row of columns -->
     <div class="row-lessons">
-      <div class="col-md-4">
+      <div class="menu-col">
         <h2>Lessons</h2>
         <p>Check out available lessons here</p>
-        <p><%= link_to "View", lessons_path, method: :get, :class => "btn btn-secondary" %></p>
+        <%= link_to "View", lessons_path, method: :get, :class => "btn btn-secondary view-btn" %>
       </div>
 
-    <hr>
-
-  </div> <!-- /container -->
+  </div>
 
 </main>
 

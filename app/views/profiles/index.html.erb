@@ -2,7 +2,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Profile</h1>
-<table>
+<table >
   <thead>
     <tr>
       
@@ -16,8 +16,8 @@
     </tr>
   </thead>
 
-    <tbody class="card m-b4">
-        <tr>
+    <tbody >
+        <tr class="profile-classroom">
           <td><%= image_tag @profile_view.picture, :class => "profile_image" if @profile_view.picture.attached? %></td>
           <td><%= @profile_view.name %></td>
           <td><%= @profile_view.bio %></td>

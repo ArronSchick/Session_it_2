@@ -1,5 +1,5 @@
 // * {
-//     border: red 0.5px solid;
+//     border: red 1px solid;
 // }
 
 .btn:visited {
@@ -37,6 +37,55 @@
     align-items: center;
 }
 
+.main {
+    display: flex;
+    
+}
+
+.navi {
+    width: 100%;
+}
+
 .btn {
     width: 200px;
+}
+
+.desc {
+    max-width: 100%;
+}
+
+.row-lessons {
+    display: flex;
+    justify-content: center;
+}
+
+.jumbotron {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-col {
+   width: 50vw;
+   border-radius: 6px;
+   background-color:rgb(110, 206, 203);
+   border: 0.5px solid rgb(97, 182, 179);
+   padding: 10px;
+   margin: 10px;
+}
+.view-btn {
+    background-color: rgb(228, 87, 46);
+}
+footer {
+    padding-top: 5vh;
+}
+
+.logs {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-classroom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

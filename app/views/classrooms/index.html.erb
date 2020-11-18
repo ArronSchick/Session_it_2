@@ -13,7 +13,7 @@
     </thead>
 
     <tbody>
-        <tr>
+        <tr class="profile-classroom">
           <td><%= image_tag @classroom_view.banner_image, :class => "banner_image" if @classroom_view.banner_image.attached? %></td>
           <td><%= image_tag @classroom_view.picture, :class => "classroom_image" if @classroom_view.picture.attached? %></td>
           <td><%= @classroom_view.description %></td>
