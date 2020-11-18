@@ -11,20 +11,36 @@
   </thead>
 
   <tbody>
+    <% @already_booked = [] %>
+    <% @Booked = Booked.all%>
+    <% @Booked.each do |booked| %>
+    <% @already_booked << booked.lesson_id %>
+    <% end %>
+    
     <% @lessons.each do |lesson| %>
       <tr>
+      
+        <% if current_user.profile.classroom.lessons.ids.include?(lesson.id) || @already_booked.include?(lesson.id) %>
+
+        <% else %>
         <td><%= image_tag lesson.picture, :class => "lesson_image" if lesson.picture.attached? %></td>
         <td><%= lesson.description %></td>
         <td><%= lesson.date %></td>
         <td><%= lesson.start_time %></td>
         <td><%= lesson.end_time %></td>
         <td>$<%= lesson.price %></td>
+        <td><% @lesson_id = lesson.id %></td>
+        <td><%= @lesson_id %></td>
+
+        <td><%= link_to 'Book it now', new_booked_path(:id => @lesson_id), :class => "actions btn btn-primary" %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
+  
 </table>
 
 <br>
 
-<%= link_to 'Back', root_path, :class => "actions btn btn-primary"  %>
+<%= link_to 'Back', root_path, method: :get, :class => "actions btn btn-primary"  %>
 </div>

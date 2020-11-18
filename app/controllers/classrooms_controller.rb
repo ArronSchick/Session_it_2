@@ -63,7 +63,7 @@ class ClassroomsController < ApplicationController
   # DELETE /classrooms/1
   # DELETE /classrooms/1.json
   def destroy
-    if current_user.profile.classroom.id && current_user.profile.classroom.lessons[0]
+    if current_user.profile.classroom.id && current_user.profile.classroom.lessons.present?
       redirect_to classrooms_path, notice: 'Cannot delete Classroom with existing lessons'
       else
       @classroom.destroy

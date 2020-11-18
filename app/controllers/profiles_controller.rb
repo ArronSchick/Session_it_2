@@ -9,7 +9,6 @@ class ProfilesController < ApplicationController
     @profile = Profile.all
     @user = current_user
     @profile_view = current_user.profile
-    @classroom_exists = current_user.profile.classroom.id
   end
 
   # GET /profiles/1
@@ -58,6 +57,13 @@ class ProfilesController < ApplicationController
   end
 
   # DELETE /profiles/1
+  def destroy
+    @profile.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Profile was successfully Deleted.' }
+      format.json { head :no_content }
+    end
+  end
   # DELETE /profiles/1.json
   
 

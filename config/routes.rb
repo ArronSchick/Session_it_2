@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :classrooms
   resources :lessons
-  resources :reviews
   resources :profiles
+  resources :bookeds
+
+  post 'bookeds/lessons/:id', to: 'bookeds#create', as: 'booked_lesson'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

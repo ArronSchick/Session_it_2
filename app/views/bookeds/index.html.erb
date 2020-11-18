@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Bookeds</h1>
+<h1>Your booked lessons</h1>
 
 <table>
   <thead>
@@ -11,15 +11,18 @@
 
   <tbody>
     <% @bookeds.each do |booked| %>
+    <% if current_user.profile.id == booked.profile_id %>
       <tr>
-        <td><%= link_to 'Show', booked %></td>
-        <td><%= link_to 'Edit', edit_booked_path(booked) %></td>
-        <td><%= link_to 'Destroy', booked, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Cancel Booking', booked, :class => "actions btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' }  %></td>
       </tr>
     <% end %>
+  <% end %>
   </tbody>
+  <%= @bookeds.ids%>
 </table>
 
 <br>
 
-<%= link_to 'New Booked', new_booked_path %>
+<%= link_to 'Make another booking', lessons_path, :class => "actions btn btn-primary" %>
+<%= link_to 'Go to Profile', profiles_path, :class => "actions btn btn-primary" %>
+

@@ -26,19 +26,27 @@
       
     </tbody>
   </table>
+  <table>
+    <% if %>
+
+
+    <% end %>
+  </table>
 
   <br>
 
 <% if @profile_view %>
  
 <% else %>
-  <%= link_to 'New Profile', new_profile_path, :class => "btn btn-primary btn-lg" %>
+  <%= link_to 'New Profile', new_profile_path, :class => "btn btn-primary" %>
 <% end %>
 
-<% if @classroom_exists %>
+<% if current_user.profile.classroom.present? %>
   <%= link_to 'Go to Classroom', classrooms_path, :class => "btn btn-primary" %>
 <% else %>
-  <%= link_to 'Create a classroom', new_classroom_path, :class => "btn btn-primary btn-lg"%>
+  <%= link_to 'Create a classroom', new_classroom_path, :class => "btn btn-primary" %>
 <% end %>
+  <%= link_to 'View booked lessons', bookeds_path, :class => "btn btn-secondary" %>
+  <%= link_to 'Book more lessons', lessons_path, :class => "btn btn-primary" %>
 
 </div>

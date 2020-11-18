@@ -13,9 +13,10 @@
       <li class="nav-item">
         <%= link_to "Profile", profiles_path, method: :get, :class => "nav-link" %>
       </li>
-        <li class="nav-item">
+      
+      <li class="nav-item">
           <%= link_to "Classroom", classrooms_path, method: :get, :class => "nav-link" %>
-        </li>
+      </li>
       
       <% if user_signed_in? == false %>
         <li class="nav-item">
