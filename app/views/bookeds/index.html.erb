@@ -13,6 +13,7 @@
     <% @bookeds.each do |booked| %>
     <% if current_user.profile.id == booked.profile_id %>
       <tr>
+      <td>YOU'VE MADE A NEW BOOKING</td>
         <td><%= link_to 'Cancel Booking', booked, :class => "actions btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' }  %></td>
       </tr>
     <% end %>
