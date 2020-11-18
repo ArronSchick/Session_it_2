@@ -13,10 +13,15 @@
       <li class="nav-item">
         <%= link_to "Profile", profiles_path, method: :get, :class => "nav-link" %>
       </li>
-      
+      <% if user_signed_in? %>
+      <% if current_user.profile.present? %>
+      <% if current_user.profile.classroom.present? %>
       <li class="nav-item">
           <%= link_to "Classroom", classrooms_path, method: :get, :class => "nav-link" %>
       </li>
+      <% end %>
+      <% end %>
+      <% end %>
       
       <% if user_signed_in? == false %>
         <li class="nav-item">
