@@ -14,6 +14,9 @@
         <%= link_to "Profile", profiles_path, method: :get, :class => "nav-link" %>
       </li>
       <% if user_signed_in? %>
+      <%# ************************************************************************* %>
+      <%# if the a profile and classroom exists in the database for the current use the displa the link %>
+      <%# ************************************************************************* %>
       <% if current_user.profile.present? %>
       <% if current_user.profile.classroom.present? %>
       <li class="nav-item">

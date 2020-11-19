@@ -6,6 +6,9 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
+  #************************************************************
+  # all lessons in database
+  #************************************************************
     @lessons = Lesson.all
     @lesson_view = current_user.profile.classroom.lessons
     @classroom_id = current_user.profile.classroom

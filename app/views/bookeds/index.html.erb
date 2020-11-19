@@ -10,7 +10,10 @@
   </thead>
 
   <tbody>
-    <% @bookeds.each do |booked| %>
+    <% @bookeds.find_each do |booked| %>
+  <%# #************************************************************
+  # comparing current use id and booking id in the database
+  #************************************************************ %>
     <% if current_user.profile.id == booked.profile_id %>
       <tr>
       <td>YOU'VE MADE A NEW BOOKING</td>

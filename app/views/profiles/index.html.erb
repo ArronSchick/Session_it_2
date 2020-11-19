@@ -5,7 +5,9 @@
 <table >
   <thead>
     <tr>
-      
+      <%# ************************************************************************* %>
+      <%# if the user profile exists %>
+      <%# ************************************************************************* %>
       <% if user_signed_in? && @user.profile %>
         <th>Welcome</th>
         <% else%>
@@ -18,6 +20,9 @@
 
     <tbody >
         <tr class="profile-classroom">
+        <%# ************************************************************************* %>
+        <%# display data for each lesson %>
+        <%# ************************************************************************* %>
           <td><%= image_tag @profile_view.picture, :class => "profile_image" if @profile_view.picture.attached? %></td>
           <td><%= @profile_view.name %></td>
           <td><%= @profile_view.bio %></td>
@@ -40,7 +45,9 @@
 <% else %>
   <%= link_to 'New Profile', new_profile_path, :class => "btn btn-primary" %>
 <% end %>
-
+<%# ************************************************************************* %>
+<%# if a classroom for the current user exists the display these links %>
+<%# ************************************************************************* %>
 <% if current_user.profile.classroom.present? %>
   <%= link_to 'Go to Classroom', classrooms_path, :class => "btn btn-primary" %>
 <% else %>
