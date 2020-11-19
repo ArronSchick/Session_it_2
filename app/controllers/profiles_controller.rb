@@ -5,7 +5,9 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    # @profiles = Profile.all
+  #************************************************************
+  # all profiles in the database
+  #************************************************************
     @profile = Profile.all
     @user = current_user
     @profile_view = current_user.profile
@@ -29,6 +31,9 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @profile = Profile.new(profile_params)
+  #************************************************************
+  # current users id from the database
+  #************************************************************
     @profile.user_id = current_user.id
 
     respond_to do |format|

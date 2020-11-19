@@ -11,15 +11,22 @@
   </thead>
 
   <tbody>
+    <%# ************************************************************************* %>
+    <%# retrieve all bookings and for each store the lesson_id in an array %>
+    <%# ************************************************************************* %>
+
     <% @already_booked = [] %>
     <% @Booked = Booked.all%>
     <% @Booked.each do |booked| %>
     <% @already_booked << booked.lesson_id %>
     <% end %>
     
-    <% @lessons.each do |lesson| %>
+    <% @lessons.find_each do |lesson| %>
       <tr>
-      
+    <%# ************************************************************************* %>
+    <%# if the lesson_ids in the database for the current user match the lesson id in the array or entries
+    in the bookeds table then don't display the lessons in the view %>
+    <%# ************************************************************************* %>
         <% if current_user.profile.classroom.lessons.ids.include?(lesson.id) || @already_booked.include?(lesson.id) %>
 
         <% else %>

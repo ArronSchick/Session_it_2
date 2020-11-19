@@ -12,15 +12,15 @@
   <% end %>
   <div class="field">
     <%= form.label :picture %>
-    <%= form.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %>
+    <%= form.file_field :picture, accept: 'image/png, image/jpg, image/jpeg', :required => 'required'  %>
   </div>
   <div class="field">
     <%= form.label :banner_image %>
-    <%= form.file_field :banner_image, accept: 'image/png, image/jpg, image/jpeg' %>
+    <%= form.file_field :banner_image, accept: 'image/png, image/jpg, image/jpeg', :required => 'required'  %>
   </div>
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description, :required => 'required'  %>
   </div>
 
   <div class="actions">

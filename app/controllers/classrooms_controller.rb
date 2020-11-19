@@ -4,7 +4,13 @@ class ClassroomsController < ApplicationController
 
   # GET /classrooms
   # GET /classrooms.json
+  
+  #************************************************************
+  # Queries for all classrooms in the database and for the 
+  # classrooms belonging to the current user
+  #************************************************************
   def index
+  
     @classrooms = Classroom.all
     @user = current_user
     @profile_exists = current_user.profile
@@ -32,6 +38,9 @@ class ClassroomsController < ApplicationController
   # POST /classrooms.json
   def create
     @classroom = Classroom.new(classroom_params)
+  #************************************************************
+  # finding the profile id of the current user
+  #************************************************************
     @classroom.profile_id = current_user.profile.id
     
 
@@ -63,15 +72,11 @@ class ClassroomsController < ApplicationController
   # DELETE /classrooms/1
   # DELETE /classrooms/1.json
   def destroy
-    if current_user.profile.classroom.id && current_user.profile.classroom.lessons.present?
-      redirect_to classrooms_path, notice: 'Cannot delete Classroom with existing lessons'
-      else
       @classroom.destroy
       respond_to do |format|
         format.html { redirect_to classrooms_path, notice: 'Classroom was successfully Deleted.' }
         format.json { head :no_content }
       end
-    end
   end
 
   private

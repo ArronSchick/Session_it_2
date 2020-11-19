@@ -24,7 +24,10 @@
   <table >
   <h1>All Lessons</h1>
     <tbody >
-        <% @lessons.each do |lesson| %>
+        <% @lessons.find_each do |lesson| %>
+        <%# ************************************************************************* %>
+        <%# if the lessons classroom_id from the data base matches the current users classroom id the display %>
+        <%# ************************************************************************* %>
         <% if lesson.classroom_id == @classroom_id.id %>
         <tr>
           <td><%= image_tag lesson.picture, :class => "lesson_image" if lesson.picture.attached? %></td>

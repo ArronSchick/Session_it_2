@@ -6,6 +6,9 @@ class BookedsController < ApplicationController
   # GET /bookeds
   # GET /bookeds.json
   def index
+  #************************************************************
+  # All bookings in the database
+  #************************************************************
     @bookeds = Booked.all
   end
 
@@ -27,7 +30,9 @@ class BookedsController < ApplicationController
   # POST /bookeds
   # POST /bookeds.json
   def create
-    
+  #************************************************************
+  # looking for the current users profile id
+  #************************************************************
     @booked = Booked.new(booked_params)
     @booked.profile_id = current_user.profile.id
     @booked.lesson_id = @lesson.id
