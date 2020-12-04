@@ -2,6 +2,7 @@
 //     border: red 1px solid;
 // }
 
+
 .btn:visited {
     color: #dedede;
 }
@@ -39,7 +40,8 @@
 
 .main {
     display: flex;
-    
+    flex-direction: column;
+    align-items: center;
 }
 
 .navi {
@@ -67,8 +69,8 @@
 .menu-col {
    width: 50vw;
    border-radius: 6px;
-   background-color:rgb(110, 206, 203);
-   border: 0.5px solid rgb(97, 182, 179);
+   background:linear-gradient(rgba(166, 184, 187, 0.7), rgba(105, 123, 128, 0.7));
+   border: 0.5px solid rgba(98, 164, 184, 0.5);
    padding: 10px;
    margin: 10px;
 }
@@ -89,4 +91,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.copy {
+    color: white;
 }
