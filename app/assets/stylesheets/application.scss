@@ -22,3 +22,11 @@
  @import "lessons";
  @import "profiles";
  @import "reviews";
+
+ html {
+    background-image: url(asset_path('mountain2.jpg'));
+ }
+
+ .body {
+    background-color: rgba(0, 0, 0, 0);
+ }
